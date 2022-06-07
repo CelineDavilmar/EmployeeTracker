@@ -1,5 +1,8 @@
-const express = require("express");
-const mysql = require("mysql");
+const express = require('express');
+const mysql = require('mysql');
+
+const app = express();
+const PORT = process.env.PORT || 3001;
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -8,14 +11,12 @@ const db = mysql.createConnection({
     database: "node_mysql"
 })
 
-db.getConnection((err) => {
+/* db.getConnection((err) => {
     if (err) {
         throw err;
     }
     console.log("MySql Connected");
-});
-
-const app = express();
+}); */
 
 app.get("/createddb", (req, res) => {
     db.query(sql, (err) => {
@@ -61,8 +62,6 @@ app.get("/updateemployee/:id", (req, res) => {
     })
 })
 
-app.listen("3001", () => {
-
-    console.log("Server started on port 3001");
-
+app.listen("3306", () => {
+    console.log("Server started on port 3306");
 });
