@@ -1,5 +1,6 @@
-const express = require('express');
-const mysql = require('mysql');
+require('dotenv').config();
+const express = require('express'); // use inquire
+const mysql = require('mysql2');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -11,12 +12,12 @@ const db = mysql.createConnection({
     database: "node_mysql"
 })
 
-/* db.getConnection((err) => {
+db.connect((err) => {
     if (err) {
         throw err;
     }
     console.log("MySql Connected");
-}); */
+});
 
 app.get("/createddb", (req, res) => {
     db.query(sql, (err) => {
@@ -62,6 +63,6 @@ app.get("/updateemployee/:id", (req, res) => {
     })
 })
 
-app.listen("3306", () => {
-    console.log("Server started on port 3306");
+app.listen("3001", () => {
+    console.log("Server started on port 3001");
 });
