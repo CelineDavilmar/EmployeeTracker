@@ -42,7 +42,7 @@ const questions = [
         message: "Please enter the Managers office number",
         name: 'Manager office number',
         validate: function (answer) {
-            if (answer.length < 1) {
+            if (answer.length < 9) {
                 return console.log("A valid response is required.");
             }
             return true;
@@ -51,15 +51,25 @@ const questions = [
     {
         type: 'list',
         message: "Would you like to add to your team or complete the process?",
-        name: 'build team',
-        choices: ['Engineer', 'Intern', 'Finish building my team'],
+        name: 'buildteam',
+        choices: [
+            {
+                value: 'Engineer'
+            },
+            {
+                value: 'Intern'
+            },
+            {
+                value: 'Finish building my team'
+            }
+        ],
 
     },
     {
         type: 'input',
-        message: "Please enter your GitHub Username.",
+        message: "Please enter Engineer name",
         name: 'username',
-        default: 'UserName',
+        when: (answers) => answers.buildteam === 'Engineer',
         validate: function (answer) {
             if (answer.length < 1) {
                 return console.log("A valid response is required.");
