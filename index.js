@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown');
+//const generateMarkdown = require('./src/generateMarkdown');
 
 
 const questions = [
@@ -68,7 +68,7 @@ const questions = [
     {
         type: 'input',
         message: "Please enter Engineer name",
-        name: 'username',
+        name: 'EngineerUsername',
         when: (answers) => answers.buildteam === 'Engineer',
         validate: function (answer) {
             if (answer.length < 1) {
@@ -79,9 +79,45 @@ const questions = [
     },
     {
         type: 'input',
-        message: "Please enter Email.",
-        name: 'email',
-        default: 'Email',
+        message: "Please enter Engineer's ID",
+        name: 'EngineerID',
+        when: (answers) => answers.EngineerUsername === 'Engineer',
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("A valid response is required.");
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        message: "Please enter Engineer's email address",
+        name: 'EngineerEmail',
+        when: (answers) => answers.EngineerUsername === 'Engineer',
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("A valid response is required.");
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        message: "Please enter Engineer's GitHub Username",
+        name: 'EngineerGithub',
+        when: (answers) => answers.EngineerUsername === 'Engineer',
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("A valid response is required.");
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        message: "Please enter Intern name",
+        name: 'InternUsername',
+        when: (answers) => answers.buildteam === 'Intern',
         validate: function (answer) {
             if (answer.length < 1) {
                 return console.log("A valid response is required.");
@@ -100,7 +136,7 @@ function writeToFile(fileName, data) {
         if (err) {
             console.log(err)
         }
-        console.log('README generated')
+        console.log('HTML generated')
     })
 }
 
@@ -108,8 +144,8 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions)
         .then((inquirerResponse, data) => {
-            console.log("Making README");
-            writeToFile("./ReadME.md", generateMarkdown(inquirerResponse, data));
+            console.log("Making HTML File");
+            writeToFile("index.html", generateMarkdown(inquirerResponse, data));
         })
         .catch((err) => {
             console.log(err);
