@@ -40,7 +40,7 @@ const questions = [
     {
         type: 'input',
         message: "Please enter the Managers office number",
-        name: 'Manager office number',
+        name: 'Managerofficenumber',
         validate: function (answer) {
             if (answer.length < 9) {
                 return console.log("A valid response is required.");
@@ -52,6 +52,7 @@ const questions = [
         type: 'list',
         message: "Would you like to add to your team or complete the process?",
         name: 'buildteam',
+        when: (answers) => answers.EngineerGithub || answers.InternGithub || answers.Managerofficenumber,
         choices: [
             {
                 value: 'Engineer'
@@ -81,7 +82,7 @@ const questions = [
         type: 'input',
         message: "Please enter Engineer's ID",
         name: 'EngineerID',
-        when: (answers) => answers.EngineerUsername === 'Engineer',
+        when: (answers) => answers.EngineerUsername,
         validate: function (answer) {
             if (answer.length < 1) {
                 return console.log("A valid response is required.");
@@ -93,7 +94,7 @@ const questions = [
         type: 'input',
         message: "Please enter Engineer's email address",
         name: 'EngineerEmail',
-        when: (answers) => answers.EngineerUsername === 'Engineer',
+        when: (answers) => answers.EngineerID > 1,
         validate: function (answer) {
             if (answer.length < 1) {
                 return console.log("A valid response is required.");
@@ -105,7 +106,7 @@ const questions = [
         type: 'input',
         message: "Please enter Engineer's GitHub Username",
         name: 'EngineerGithub',
-        when: (answers) => answers.EngineerUsername === 'Engineer',
+        when: (answers) => answers.EngineerEmail > 1,
         validate: function (answer) {
             if (answer.length < 1) {
                 return console.log("A valid response is required.");
@@ -118,6 +119,42 @@ const questions = [
         message: "Please enter Intern name",
         name: 'InternUsername',
         when: (answers) => answers.buildteam === 'Intern',
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("A valid response is required.");
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        message: "Please enter Intern's ID",
+        name: 'InternID',
+        when: (answers) => answers.InternUsername,
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("A valid response is required.");
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        message: "Please enter Intern's email address",
+        name: 'InternEmail',
+        when: (answers) => answers.InternID,
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("A valid response is required.");
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        message: "Please enter Intern's GitHub Username",
+        name: 'InternGithub',
+        when: (answers) => answers.InternEmail,
         validate: function (answer) {
             if (answer.length < 1) {
                 return console.log("A valid response is required.");
