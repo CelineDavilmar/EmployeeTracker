@@ -1,68 +1,110 @@
-require('dotenv').config();
-const express = require('express'); // use inquire
-const mysql = require('mysql2');
+const inquirer = require('inquirer');
+const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown');
 
-const app = express();
-const PORT = process.env.PORT || 3001;
 
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "project123",
-    database: "node_mysql"
-})
-
-db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log("MySql Connected");
-});
-
-app.get("/createddb", (req, res) => {
-    db.query(sql, (err) => {
-        if (err) {
-            throw err;
+const questions = [
+    {
+        type: 'input',
+        message: "Please enter the managers name",
+        name: 'Manager',
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("A valid Project Title is required.");
+            }
+            return true;
         }
-
-        res.send("Database created")
-    });
-});
-
-app.get("/createemployee", (req, res) => {
-    let sql = "CREATE TABLE employee (id int AUTO_INCREMENT,name VARCHAR(100), designation VARCHAR(200), PRIMARY KEY(id))"
-
-    db.query(sql, (err) => {
-        if (err) {
-            throw err;
+    },
+    {
+        type: 'input',
+        message: "Please enter the Managers employee ID",
+        name: 'Manager ID',
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("A Description is required.");
+            }
+            return true;
         }
-        res.send("created employee table");
+    },
+    {
+        type: 'input',
+        message: "Please enter the Managers email",
+        name: 'Manager email',
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("A valid response is required.");
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        message: "Please enter the Managers office number",
+        name: 'Manager office number',
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("A valid response is required.");
+            }
+            return true;
+        }
+    },
+    {
+        type: 'list',
+        message: "Would you like to add to your team or complete the process?",
+        name: 'build team',
+        choices: ['Engineer', 'Intern', 'Finish building my team'],
+
+    },
+    {
+        type: 'input',
+        message: "Please enter your GitHub Username.",
+        name: 'username',
+        default: 'UserName',
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("A valid response is required.");
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        message: "Please enter Email.",
+        name: 'email',
+        default: 'Email',
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("A valid response is required.");
+            }
+            return true;
+        }
+    },
+
+];
+
+// TODO: Create a function to write README file
+function writeToFile(fileName, data) {
+    //fileName = "./ReadME.md"
+
+    fs.writeFile(fileName, data, (err) => {
+        if (err) {
+            console.log(err)
+        }
+        console.log('README generated')
     })
-})
+}
 
-app.get("./employeeOne", (req, res) => {
-    let post = { name: "John Doe", designation: "CEO" };
-    let sql = "INSERT INTO employee SET ?";
-    let query = db.query(sql, post, (err) => {
-        if (err) {
-            throw err;
-        }
-        res.send("employee added")
-    })
+// TODO: Create a function to initialize app
+function init() {
+    inquirer.prompt(questions)
+        .then((inquirerResponse, data) => {
+            console.log("Making README");
+            writeToFile("./ReadME.md", generateMarkdown(inquirerResponse, data));
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
 
-})
-
-app.get("/updateemployee/:id", (req, res) => {
-    let newRole = "Updated Role";
-    let sql = `UPDATE employee SET role ='${newRole}'WHERE id=${req.params.id}`;
-    let query = db.query(sql, (err) => {
-        if (err) {
-            throw err;
-        }
-        res.send("Role Updated");
-    })
-})
-
-app.listen("3001", () => {
-    console.log("Server started on port 3001");
-});
+// Function call to initialize app
+init();
