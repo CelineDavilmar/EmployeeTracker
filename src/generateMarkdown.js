@@ -1,3 +1,68 @@
+class Employee {
+    constructor(name, id, email) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
+    }
+
+    getName();
+    getId();
+    getEmail();
+    getRole() {
+        return Employee;
+    };
+
+};
+
+class Manager extends Employee {
+    constructor(name, id, email, officeNumber) {
+        super(name);
+        super(id);
+        super(email);
+        this.officeNumber = officeNumber;
+    }
+    getRole() {
+        return Manager;
+    };
+    officeNumber() {
+        return this.officeNumber;
+    };
+}
+
+
+class Engineer extends Employee {
+    constructor(name, id, email, github) {
+        super(name);
+        super(id);
+        super(email);
+        this.github = github;
+    }
+
+    getGitgub() {
+        return this.github;
+    }
+    getRole() {
+        return Engineer;
+    }
+};
+
+class Intern extends Employee {
+    constructor(name, id, email, school) {
+        super(name);
+        super(id);
+        super(email);
+        this.school = school;
+    }
+
+    getSchool() {
+        return this.school;
+    }
+    getRole() {
+        return Intern;
+    }
+};
+
+
 function generateMarkdown(data) {
     return `
 <!DOCTYPE html>
