@@ -52,7 +52,7 @@ const questions = [
         type: 'list',
         message: "Would you like to add to your team or complete the process?",
         name: 'buildteam',
-        when: (answers) => answers.EngineerGithub || answers.InternGithub || answers.Managerofficenumber,
+        //when: (answers) => answers.EngineerGithub || answers.InternGithub || answers.Managerofficenumber,
         choices: [
             {
                 value: 'Engineer'
