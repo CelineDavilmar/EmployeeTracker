@@ -94,7 +94,7 @@ const questions = [
         type: 'input',
         message: "Please enter Engineer's email address",
         name: 'EngineerEmail',
-        when: (answers) => answers.EngineerID > 1,
+        when: (answers) => answers.EngineerID,
         validate: function (answer) {
             if (answer.length < 1) {
                 return console.log("A valid response is required.");
@@ -106,7 +106,7 @@ const questions = [
         type: 'input',
         message: "Please enter Engineer's GitHub Username",
         name: 'EngineerGithub',
-        when: (answers) => answers.EngineerEmail > 1,
+        when: (answers) => answers.EngineerEmail,
         validate: function (answer) {
             if (answer.length < 1) {
                 return console.log("A valid response is required.");

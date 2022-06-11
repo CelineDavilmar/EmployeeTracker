@@ -6,26 +6,59 @@ function generateMarkdown(data) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Tracker</title>
+    <link rel="stylesheet" href="./style.css">
+    <title>My Team!</title>
 </head>
 <body>
-<box>
-    <h1>${data.Manager}</h1>
-    <h2>${data.ManagerID}</h2>
-    <h3>${data.Manageremail}</h3>
-    <h3>${data.Managerofficenumber}</h3>
+<box> 
+    <h1 class="title"> Team Members </h1>
 </box>
-<box>
-    <h1>${data.EngineerUsername}</h1>
-    <h2>${data.EngineerID}</h2>
-    <h3>${data.EngineerEmail}</h3>
-    <h3>${data.EngineerGithub}</h3>
+<box class="Managerbox">
+    <box class="innerbox">
+        <h1>${data.Manager}</h1>
+        <h2>Manager</h3>
+    </box>
+    <box class="info">
+        <h3>ID: ${data.ManagerID}</h2>
+    </box>
+    <box class="info">
+        <h3>Email: ${data.Manageremail}</h3>
+    </box>
+    <box class="info">
+        <h3>Office number: ${data.Managerofficenumber}</h3>
+    </box>
 </box>
-<box>
-    <h1>${data.InternUsername}</h1>
-    <h2>${data.InternID}</h2>
-    <h3>${data.InternEmail}</h3>
-    <h3>${data.InternGithub}</h3>
+<box class="container">
+<box class="box">
+<box class="innerbox">
+        <h1>${data.EngineerUsername}</h1>
+        <h2>Engineer</h3>
+    </box>
+    <box class="info">
+        <h3>ID: ${data.EngineerID}</h2>
+    </box>
+    <box class="info">
+        <h3>Email: ${data.EngineerEmail}</h3>
+    </box>
+    <box class="info">
+        <h3>Office number: ${data.EngineerGithub}</h3>
+    </box>
+</box>
+<box class="box">
+<box class="innerbox">
+        <h1>${data.InternUsername}</h1>
+        <h2>Intern</h3>
+    </box>
+    <box class="info">
+        <h3>ID: ${data.InternID}</h2>
+    </box>
+    <box class="info">
+        <h3>Email: ${data.InternEmail}</h3>
+    </box>
+    <box class="info">
+        <h3>Office number: ${data.InternGithub}</h3>
+    </box>
+</box>
 </box>
 </body>
 </html>
