@@ -9,34 +9,24 @@ function generateMarkdown(data) {
     <title>Employee Tracker</title>
 </head>
 <body>
-${data.Manager}
-
-
-${data.ManagerID}
-
-${data.Manageremail}
-
-
-${data.Managerofficenumber}
-
-${data.EngineerUsername}
-
-
-${data.EngineerID}
-
-
-${data.EngineerEmail}
-
-${data.EngineerGithub}
-
-${data.InternUsername}
-
-${data.InternID}
-
-${data.InternEmail}
-
-${data.InternGithub}
-    
+<box>
+    <h1>${data.Manager}</h1>
+    <h2>${data.ManagerID}</h2>
+    <h3>${data.Manageremail}</h3>
+    <h3>${data.Managerofficenumber}</h3>
+</box>
+<box>
+    <h1>${data.EngineerUsername}</h1>
+    <h2>${data.EngineerID}</h2>
+    <h3>${data.EngineerEmail}</h3>
+    <h3>${data.EngineerGithub}</h3>
+</box>
+<box>
+    <h1>${data.InternUsername}</h1>
+    <h2>${data.InternID}</h2>
+    <h3>${data.InternEmail}</h3>
+    <h3>${data.InternGithub}</h3>
+</box>
 </body>
 </html>
 `;
