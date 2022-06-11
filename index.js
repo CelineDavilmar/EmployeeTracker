@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-//const generateMarkdown = require('./src/generateMarkdown');
+const generateMarkdown = require('./src/generateMarkdown');
 
 
 const questions = [
@@ -18,7 +18,7 @@ const questions = [
     {
         type: 'input',
         message: "Please enter the Managers employee ID",
-        name: 'Manager ID',
+        name: 'ManagerID',
         validate: function (answer) {
             if (answer.length < 1) {
                 return console.log("A Description is required.");
@@ -29,7 +29,7 @@ const questions = [
     {
         type: 'input',
         message: "Please enter the Managers email",
-        name: 'Manager email',
+        name: 'Manageremail',
         validate: function (answer) {
             if (answer.length < 1) {
                 return console.log("A valid response is required.");
