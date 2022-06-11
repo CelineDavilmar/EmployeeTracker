@@ -15,8 +15,8 @@ function generateMarkdown(data) {
 </box>
 <box class="Managerbox">
     <box class="innerbox">
-        <h1>${data.Manager}</h1>
-        <h2>Manager</h3>
+        <h1 class="innerbox1">${data.Manager}</h1>
+        <h2 class="innerbox2">Manager</h3>
     </box>
     <box class="info">
         <h3>ID: ${data.ManagerID}</h2>
@@ -31,8 +31,8 @@ function generateMarkdown(data) {
 <box class="container">
 <box class="box">
 <box class="innerbox">
-        <h1>${data.EngineerUsername}</h1>
-        <h2>Engineer</h3>
+        <h1 class="innerbox1">${data.EngineerUsername}</h1>
+        <h2 class="innerbox2">Engineer</h3>
     </box>
     <box class="info">
         <h3>ID: ${data.EngineerID}</h2>
@@ -46,8 +46,8 @@ function generateMarkdown(data) {
 </box>
 <box class="box">
 <box class="innerbox">
-        <h1>${data.InternUsername}</h1>
-        <h2>Intern</h3>
+        <h1 innerbox="innerbox1">${data.InternUsername}</h1>
+        <h2 class="innerbox2">Intern</h3>
     </box>
     <box class="info">
         <h3>ID: ${data.InternID}</h2>

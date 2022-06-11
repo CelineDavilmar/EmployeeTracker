@@ -1,38 +1,62 @@
+* {
+    /* background-color: rgb(163, 212, 255); */
+    background-color: rgb(239, 219, 255);
+}
+
+h1, h2 {
+    background-color: rgb(224, 185, 255);
+    color: rgb(255, 255, 255);
+}
+
+h3 {
+    background-color: rgb(239, 219, 255);
+    color: rgb(255, 255, 255);
+}
+
 .title {
-    color:brown;
+    color: rgb(255, 255, 255);
+    background-color: rgb(224, 185, 255);
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    display: block;
     text-align: center;
-    margin-bottom: 4em;
+    margin: 2em;
+    height: 6rem;
 }
 
 .Managerbox {
-    border-color: black;
+    border-color: rgb(224, 185, 255);
     border-style: solid;
     display: block;
     width: 20%;
     margin-bottom: 3em;
     margin-left: 40%;
     text-align: center;
+    background-color: rgb(255, 255, 255);
 }
 
 .innerbox {
-    border-color: black;
     border-style: solid;
     display: block;
+    background-color: rgb(224, 185, 255);
+    border-color: rgb(255, 255, 255);
 }
 
 .info {
-    border-color: black;
+    border-color: rgb(224, 185, 255);;
     border-style: solid;
     display: block;
     margin: 1rem;
+    background-color: rgb(239, 219, 255);
 }
 
 .box {
-    border-color: black;
     border-style: solid;
     display: inline-block;
     width: 20%;
     text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(224, 185, 255);;
 }
 
 .container {
