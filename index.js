@@ -2,6 +2,42 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./src/generateMarkdown');
 
+/* const questions = () => {
+    return inquirer.prompt({
+        name: "Manager",
+        type: "input",
+        message: "Please enter the managers name",
+    })
+        .then((answers) => {
+            const response = answers.start;
+            if (!response) {
+                return questions
+            }
+            inquirer.prompt({
+                type: 'input',
+                message: "Please enter the Managers employee ID",
+                name: 'ManagerID',
+            })
+        }
+
+questions()
+                .then(() => {
+                    return inquirer.prompt({
+                        type: 'list',
+                        message: "Would you like to add to your team or complete the process?",
+                        name: 'buildteam',
+                        choices: [
+                            {
+                                value: 'Engineer'
+                            },
+                            {
+                                value: 'Intern'
+                            },
+                            {
+                                value: 'Finish building my team'
+                            }
+                        ],
+                    }) */
 
 const questions = [
     {
